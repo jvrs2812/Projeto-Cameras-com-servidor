@@ -1,8 +1,8 @@
 #include <EasyDDNS.h>
 #include <ESP8266WiFi.h>
 
-const char* ssid = "your-ssid";
-const char* password = "your-password";
+const char* ssid = "seu-ssid";
+const char* password = "sua-senha";
 
 WiFiServer server(80);
 
@@ -14,13 +14,13 @@ while (WiFi.status() != WL_CONNECTED) {
 delay(500);
 Serial.print(".");
 }
-Serial.println(WiFi.localIP()); // Print the IP address
+Serial.println(WiFi.localIP()); // Mostra o IP address
 server.begin();
 
-EasyDDNS.service("noip");    // Enter your DDNS Service Name - "duckdns" / "noip"
-EasyDDNS.client("domain","username","password");    // Enter ddns Domain & Username & Password | Example - "esp.duckdns.org","username", "password"
+EasyDDNS.service("noip");    // Entrar com o seu DDNS Service Name - "duckdns" / "noip"
+EasyDDNS.client("domain","username","password");    // Entrar ddns Domain & Username & Password | Exemplo - "esp.duckdns.org","username", "password"
 }
 
 void loop() {
-EasyDDNS.update(10000); // Check for New Ip Every 10 Seconds.
+EasyDDNS.update(10000); // Checka o novo IP a cada 10 seg
 }
